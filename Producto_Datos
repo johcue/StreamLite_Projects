@@ -1,0 +1,57 @@
+1. Migrar informacion a Mongo: db Icfes collection icfes20s2
+mongoimport --db Icfes --collection icfes20s2 --type=csv --file Saber_11__2020-2.csv --headerline
+
+2. Desagregar las columnas importantes:
+-ESTU_GENERO				categorico	agrupar
+-PUNT_LECTURA_CRITICA			numerico	min,max,med,sd
+-PUNT_MATEMATICAS			numerico	min,max,med,sd
+-PUNT_C_NATURALES			numerico	min,max,med,sd
+-PUNT_INGLES	                       numerico	min,max,med,sd
+-PUNT_SOCIALES_CIUDADANAS		numerico	min,max,med,sd	
+-PUNT_GLOBAL				numerico	min,max,med,sd
+-COLE_COD_DANE_ESTABLECIMIENTO        categorico	agrupar
+-COLE_NOMBRE_ESTABLECIMIENTO		info
+-COLE_COD_MCPIO_UBICACION		categorico	agrupar
+-COLE_MCPIO_UBICACION			categorico	agrupar
+-COLE_COD_DEPTO_UBICACION		categorico	agrupar
+-COLE_DEPTO_UBICACION			categorico	agrupar
+-COLE_NATURALEZA
+
+db.icfes20s2.aggregate([
+    {$match:{COLE_DEPTO_UBICACION:'RISARALDA'}},
+    {$project:{_id:1,ESTU_GENERO:1,PUNT_LECTURA_CRITICA:1,PUNT_MATEMATICAS:1,PUNT_INGLES:1,PUNT_C_NATURALES:1,PUNT_SOCIALES_CIUDADANAS:1,PUNT_GLOBAL:1,COLE_COD_DANE_ESTABLECIMIENTO:1,COLE_NOMBRE_ESTABLECIMIENTO:1,COLE_COD_MCPIO_UBICACION:1,COLE_MCPIO_UBICACION:1,COLE_COD_DEPTO_UBICACION:1,COLE_DEPTO_UBICACION:1,COLE_NATURALEZA:1}},
+    {$out:'ris20s2'} 
+    ])
+
+5. Extraer datos:
+mongoexport --db Icfes --collection ris20s2 --type=csv --fields _id,ESTU_GENERO,PUNT_LECTURA_CRITICA,PUNT_MATEMATICAS,PUNT_C_NATURALES,PUNT_SOCIALES_CIUDADANAS,PUNT_GLOBAL,COLE_COD_DANE_ESTABLECIMIENTO,COLE_NOMBRE_ESTABLECIMIENTO,COLE_COD_MCPIO_UBICACION,COLE_MCPIO_UBICACION,COLE_COD_DEPTO_UBICACION,COLE_DEPTO_UBICACION,COLE_NATURALEZA --out icfes_ris20s2.csv  
+
+mongoexport --db Icfes --collection ris20s2 --type=csv --fields ESTU_GENERO,PUNT_LECTURA_CRITICA,PUNT_MATEMATICAS,PUNT_C_NATURALES,PUNT_INGLES,PUNT_SOCIALES_CIUDADANAS,PUNT_GLOBAL,COLE_COD_DANE_ESTABLECIMIENTO,COLE_NOMBRE_ESTABLECIMIENTO,COLE_COD_MCPIO_UBICACION,COLE_MCPIO_UBICACION,COLE_COD_DEPTO_UBICACION,COLE_DEPTO_UBICACION,COLE_NATURALEZA --out icfes_ris.csv  
+
+_id,ESTU_GENERO,PUNT_LECTURA_CRITICA,PUNT_MATEMATICAS,PUNT_C_NATURALES,PUNT_SOCIALES_CIUDADANAS,PUNT_GLOBAL,COLE_COD_DANE_ESTABLECIMIENTO,COLE_NOMBRE_ESTABLECIMIENTO,COLE_COD_MCPIO_UBICACION,COLE_MCPIO_UBICACION,COLE_COD_DEPTO_UBICACION,COLE_DEPTO_UBICACION,COLE_NATURALEZA
+
+- Cual es el area de mayor desempeño del colegio?
+- Cual es el area de menor desempeño del colegio?
+- Cuales son los 5 mayores puntajes de cada area (del propio colegio)
+- Cuales son los 5 menores puntajes de cada area (del propio colegio)
+- Que colegios privados tuvieron mayor desempeño que el propio municipal(privados/publicos)?
+- Que colegios privados tuvieron menor desempeño que el propio municipal(privados/publicos)?
+- Que colegios privados tuvieron mayor desempeño que el propio nacional(privados/publicos)?
+- Que colegios privados tuvieron menor desempeño que el propio nacional(privados/publicos)?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

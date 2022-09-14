@@ -1,0 +1,189 @@
+Metodologia
+
+1) Modelar experimento
+
+Se debe estar seguro sobre el contenido o descripcion de los datos.
+Objetivo es contrastar la observación de los datos del cientifico de datos con la vision de la empresa.
+
+Ejmplo: colegio privado.
+
+ESTU_GENERO
+PUNT_LECTURA_CRITICA	
+PERCENTIL_LECTURA_CRITICA		
+DESEMP_LECTURA_CRITICA	
+PUNT_MATEMATICAS	
+PERCENTIL_MATEMATICAS	
+DESEMP_MATEMATICAS	
+PUNT_C_NATURALES	
+PERCENTIL_C_NATURALES	
+DESEMP_C_NATURALES	
+PUNT_SOCIALES_CIUDADANAS	
+PERCENTIL_SOCIALES_CIUDADANAS	
+DESEMP_SOCIALES_CIUDADANAS	
+PUNT_INGLES	
+PERCENTIL_INGLES	
+DESEMP_INGLES	
+PUNT_GLOBAL	
+PERCENTIL_GLOBAL	
+ESTU_INSE_INDIVIDUAL	
+ESTU_NSE_INDIVIDUAL	
+ESTU_NSE_ESTABLECIMIENTO	
+ESTU_ESTADOINVESTIGACION	
+ESTU_GENERACION-E
+COLE_COD_DANE_ESTABLECIMIENTO	
+COLE_NOMBRE_ESTABLECIMIENTO
+COLE_COD_MCPIO_UBICACION	
+COLE_MCPIO_UBICACION	
+COLE_COD_DEPTO_UBICACION
+COLE_DEPTO_UBICACION
+
+29 variables seleccion  de 81 datos 
+En este caso se trabaja con 35% de todos los datos.
+Estoy descartando 65% de los datos
+
+Como resultado se establecen las variables de inicio y un objetivo final (provisional)
+
+2) Definir datos con valor, seleccionar datos importantes para el análisis.
+
+Datos seleccionados: 29
+
+ESTU_GENERO
+PUNT_LECTURA_CRITICA	
+PUNT_MATEMATICAS	
+PUNT_C_NATURALES	
+PUNT_SOCIALES_CIUDADANAS	
+PUNT_GLOBAL
+COLE_COD_DANE_ESTABLECIMIENTO	
+COLE_NOMBRE_ESTABLECIMIENTO
+COLE_COD_MCPIO_UBICACION	
+COLE_MCPIO_UBICACION	
+COLE_COD_DEPTO_UBICACION
+COLE_DEPTO_UBICACION
+
+se seleccionan 12 variables de 29, se trabajará con 14% de las variables, he descartado 86% datos
+12/81
+
+3) Descripción de datos. Definir tipo de dato y posible explotación o exploración.
+
+ESTU_GENERO				categorico	agrupar
+PUNT_LECTURA_CRITICA			numerico	min,max,med,sd
+PUNT_MATEMATICAS			numerico	min,max,med,sd
+PUNT_C_NATURALES			numerico	min,max,med,sd	
+PUNT_SOCIALES_CIUDADANAS		numerico	min,max,med,sd	
+PUNT_GLOBAL				numerico	min,max,med,sd
+COLE_COD_DANE_ESTABLECIMIENTO		categorico	agrupar
+COLE_NOMBRE_ESTABLECIMIENTO		info
+COLE_COD_MCPIO_UBICACION		categorico	agrupar
+COLE_MCPIO_UBICACION			categorico	agrupar
+COLE_COD_DEPTO_UBICACION		categorico	agrupar
+COLE_DEPTO_UBICACION			categorico	agrupar
+COLE_NATURALEZA				categorico	agrupar/contrastar
+
+13/81  16%  84% descartado
+
+Los procesos de transformacion que al aplicarse debe generar procesos o resultados.	
+
+4) Establecer peso o valor (1-5 5 es mas importante) basado en importancia, separados por tipo:
+
+numericos:
+PUNT_LECTURA_CRITICA			numerico	min,max,med,sd		5
+PUNT_MATEMATICAS			numerico	min,max,med,sd		5
+PUNT_C_NATURALES			numerico	min,max,med,sd		5	
+PUNT_SOCIALES_CIUDADANAS		numerico	min,max,med,sd		5		
+PUNT_GLOBAL				numerico	min,max,med,sd		5
+
+categoricos:
+ESTU_GENERO				categorico	agrupar			2
+COLE_COD_DANE_ESTABLECIMIENTO		categorico	agrupar			2
+COLE_NOMBRE_ESTABLECIMIENTO		info					2
+COLE_COD_MCPIO_UBICACION		categorico	agrupar			3
+COLE_MCPIO_UBICACION			categorico	agrupar			3
+COLE_COD_DEPTO_UBICACION		categorico	agrupar			2
+COLE_DEPTO_UBICACION			categorico	agrupar			2
+COLE_NATURALEZA				categorico	agrupar/contrastar	2
+
+5) Modelar la pregunta.
+Objetivo del análisis: establecer limites alcanzables del análisis, definición de tesis.
+Vamos a plantear algunas preguntas que podríamos responder analizando los datos.
+
+- Cual es el area de mayor desempeño del colegio?
+- Cual es el area de menor desempeño del colegio?
+- Cuales son los 5 mayores puntajes de cada area (del propio colegio)
+- Cuales son los 5 menores puntajes de cada area (del propio colegio)
+- Que colegios privados tuvieron mayor desempeño que el propio municipal(privados/publicos)?
+- Que colegios privados tuvieron menor desempeño que el propio municipal(privados/publicos)?
+- Que colegios privados tuvieron mayor desempeño que el propio nacional(privados/publicos)?
+- Que colegios privados tuvieron menor desempeño que el propio nacional(privados/publicos)?
+
+- En que año se obtuvo mayor desempeño en las pruebas (si se tiene 2020, contrastar con años anteriores)?
+- Cual es el area de mayor desempeño del colegio? (años anteriores)
+- Cual es el area de menor desempeño del colegio? (años anteriores)
+- Cuales son los 5 mayores puntajes de cada area (del propio colegio)? (años anteriores)
+- Cuales son los 5 menores puntajes de cada area (del propio colegio)? (años anteriores)
+
+Si N preguntas se puede proyectar, el promedio de explotación de es de tres productos por pregunta. 
+Si se tienen 10 objetivos entonces se generan 30 productos de análisis.
+Al combinar 2 objetivos se pueden generar mas productos.
+
+Como convertir en un producto de datos?
+Se tiene:
+- Cual es el area de mayor desempeño del colegio?
+Es posible:
+Histograma de desempeño
+Histograma por genero
+Contraste con años anteriores
+Proyección para años futuros
+Plantear pruebas de hipotesis
+Plantear estimadores
+
+SI generamos 3-6 productos de datos por pregunta: 13*4: 52 productos de datos!
+Al combinar 2 objetivos se pueden generar mas productos.
+
+6) Modelar productos de datos.
+
+Se deben enumerar los posibles productos a los que apuntará el análisis.
+Se establecerá el objetivo general.
+Generar información de tipo desempeño por año desagregado por areas y comparaciones con establecimiento similares.
+
+7) Establecer modelos de consulta, agregación y desagregacion de datos.
+Este paso puede requerir modelos de imputación de datos (transformación de datos crudos a datos pre
+procesados)
+
+Crear una conjunto de datos con las columnas que se emplearan para contestar las preguntas.
+Tomar una pregunta y definir los pasos de pre proceso de datos.
+Plantear alternativas de análisis:
+• cantidades
+• promedios
+• mejores, peores
+• graficas
+• listas
+
+8) Imputación de datos (ETL)
+
+Se enumeran las consultas o filtros que serán necesarias.
+Puntajes del departamnto de Risaralda
+Puntajes del mismo municipio
+Puntajes del colegio propio
+Puntajes de cualquier colegio
+
+Genrar max, min, media, sd, etc.
+
+9) Generación descriptiva de datos (primer paso analítico)
+• Análisis y procesamiento de datos (estadístico)
+• Flujo de trabajo (workflow) vs sopa de scripts
+• Visualización
+• Generación de micro sitio
+• Generación de micro servicio
+
+10) Minería de datos (extraer conclusiones generales del modelo de datos)
+• Sistemas de reportes
+• Modelos de almacenamiento
+• Perspectiva de implementaciones futuras
+
+11) Desarrollo del modelo, implementar el modelo investigado a gran escala
+
+Trabajos futuros:
+12) Modelo prescriptivo
+13) Modelo predictivo (optimización)
+
+
